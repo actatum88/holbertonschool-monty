@@ -41,4 +41,5 @@ typedef struct instruction_s
 char *errcat(char *pname, char *cname);
 /*main.c*/
 int main(int ac, char *av[]);
+void squeeze_spaces(char *str_d);
 #endif
