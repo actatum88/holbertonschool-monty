@@ -6,6 +6,19 @@
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include <ctype.h>
+#include <string.h>
+
+/**
+ * argument - global variable to hold the value of the argument.
+ *
+ */
+typedef struct arg
+{
+    char *argument;
+}arg;
+arg Arg;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,17 +50,16 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * ERRCAT - WRITES SH-STYLE ERROR MESSAGES
- * @PNAME: ARGV[0] AS INVOKED
- * @CNAME: USER-PROVIDED INPUT COMMAND
- * RETURN: SH-STYLE ERROR STRING
- */
-}
 
 /*errcat.c*/
 char *errcat(char *pname, char *cname);
 /*main.c*/
-
 int main(int ac, char *av[]);
+/*opcode.c*/
+void pushOp(stack_t stack, unsigned int line_number);
+void run_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+
+extern char *global;
+
 #endif
