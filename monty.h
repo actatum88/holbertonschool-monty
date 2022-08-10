@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -36,4 +37,17 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * ERRCAT - WRITES SH-STYLE ERROR MESSAGES
+ * @PNAME: ARGV[0] AS INVOKED
+ * @CNAME: USER-PROVIDED INPUT COMMAND
+ * RETURN: SH-STYLE ERROR STRING
+ */
+}
+
+/*errcat.c*/
+char *errcat(char *pname, char *cname);
+/*main.c*/
+
+int main(int ac, char *av[]);
 #endif
