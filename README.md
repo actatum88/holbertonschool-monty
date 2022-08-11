@@ -45,11 +45,11 @@ atatum/dcorley:~/monty$
 </pre></code>
 
 ## File Descriptions
-* **monty.h - Header file that contains all the prototypes and the struct used to make the Monty interpreter functional.
-* **main.c - Main function file that executes the Monty interpreter. It utilizies the prototype: "" . It returns: 
-* **ops.c - Contains the opcodes push & pall.
-* **errcat.c - Contains the errcat function to write to sh-style error messages.
-* **opcode.c - Contains the pint function to write to the top of the stack.
+* **monty.h** - Header file that contains all the prototypes and the struct used to make the Monty interpreter functional.
+* **main.c** - Main function file that executes the Monty interpreter. It utilizies the prototype: "" . It returns: 
+* **ops.c** - Contains the opcodes push & pall.
+* **errcat.c** - Contains the errcat function to write to sh-style error messages.
+* **opcode.c** - Contains the pint function to write to the top of the stack.
 
 
 
