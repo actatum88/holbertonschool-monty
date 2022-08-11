@@ -49,4 +49,7 @@ void pall(stack_t **stack, unsigned int line_number, char *next);
 void (*get_op(char *s))(stack_t **stack, unsigned int line_num, char *next);
 void exec_script(char *buf, stack_t *stack);
 FILE *monty_init(int ac, char *av[]);
+/*Globals*/
+extern char *buf;
+extern FILE *monty;
 #endif

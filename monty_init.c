@@ -1,8 +1,7 @@
 #include "monty.h"
-#include "global.h"
 FILE *monty_init(int ac, char *av[])
 {
-	FILE *monty = NULL, *temp = NULL;
+	FILE *temp = NULL;
 
 /*Check for correct usage.*/
 	if (ac != 2)

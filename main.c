@@ -1,8 +1,5 @@
 #include "monty.h"
-#include "global.h"
-
-FILE *monty;
-
+/* FILE *monty = NULL; */
 /**
  * main - implement the push and pall opcodes.
  * @ac: argument counter
@@ -13,12 +10,13 @@ int main(int ac, char *av[])
 {
 	stack_t *stack = NULL, *temp = NULL;
 	char *buf = NULL;
-	/* FILE *monty = NULL; */
 
 	monty_init(ac, av);
 
 	exec_script(buf, stack);
+
 	fclose(monty); /*Close the file when you don't need it, start freeing*/
+
 	if (buf)
 		free(buf);
 	if (stack)
