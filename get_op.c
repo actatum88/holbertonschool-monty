@@ -14,7 +14,7 @@ void (*get_op(char *s))(stack_t **stack, unsigned int line_num)
 		/* {"pop", pop}, */
 		/* {"swap", swap}, */
 		/* {"add", add}, */
-		/* {"nop", nop}, */
+		{"nop", NULL},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
