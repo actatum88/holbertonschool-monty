@@ -9,6 +9,9 @@
 #include <fcntl.h>
 #include <ctype.h>
 #include <string.h>
+/*Macros*/
+#define NOT __attribute__
+#define USED ((unused))
 /*Structs*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,5 +46,7 @@ typedef struct instruction_s
 void squeeze_spaces(char *str_d);
 void push(stack_t **stack, unsigned int line_number, char *next);
 void pall(stack_t **stack, unsigned int line_number, char *next);
-void (*get_spec(char *s))(stack_t **stack, unsigned int line_num, char *next);
+void (*get_op(char *s))(stack_t **stack, unsigned int line_num, char *next);
+void exec_script(char *buf, stack_t *stack);
+FILE *monty_init(int ac, char *av[]);
 #endif
