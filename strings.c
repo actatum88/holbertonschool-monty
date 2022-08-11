@@ -2,7 +2,6 @@
 /**
  * squeeze_spaces - squeeze spaces
  * @str_d: string to clean
- * @slen: string length after clenaing
  */
 void squeeze_spaces(char *str_d)
 {

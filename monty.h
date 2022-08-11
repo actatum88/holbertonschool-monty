@@ -44,12 +44,11 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct monty_data - stores multiply-used data elements for monty scripts
- * @opcode: the opcode
- * @f: function to handle the opcode
+ * struct monty_d - stores multiply-used data elements for monty scripts
+ * @buf: line pulled from @script
+ * @script: input file from av[1]
  *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * Description: stores the most used elements globally
  */
 typedef struct monty_d
 {

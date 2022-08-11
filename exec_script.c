@@ -1,6 +1,9 @@
 #include "monty.h"
 
-
+/**
+ * exec_script - runs stack ops from a monty script
+ * @stack: data stack for each subroutine
+ */
 void exec_script(stack_t **stack)
 {
 	const char delim = ' ';
