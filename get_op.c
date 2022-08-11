@@ -4,7 +4,7 @@
  * @s: char input to match valid opcode
  */
 
-void (*get_op(char *s))(stack_t **stack, unsigned int line_num, char *next)
+void (*get_op(char *s))(stack_t **stack, unsigned int line_num)
 {
 	instruction_t ops[] = {
 		{"push", push},
@@ -18,6 +18,8 @@ void (*get_op(char *s))(stack_t **stack, unsigned int line_num, char *next)
 	};
 	unsigned int i = 0;
 
+	if (!s)
+		return (NULL);
 	while (ops[i].opcode != NULL && strcmp(s, ops[i].opcode) != 0)
 		i++;
 

@@ -40,16 +40,35 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number, char *next);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct monty_data - stores multiply-used data elements for monty scripts
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct monty_d
+{
+	char *buf;
+	FILE *script;
+} monty_data;
 /*main.c*/
 void squeeze_spaces(char *str_d);
-void push(stack_t **stack, unsigned int line_number, char *next);
-void pall(stack_t **stack, unsigned int line_number, char *next);
-void (*get_op(char *s))(stack_t **stack, unsigned int line_num, char *next);
-void exec_script(char *buf, stack_t *stack);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void (*get_op(char *s))(stack_t **stack, unsigned int line_num);
+void exec_script(stack_t **stack);
 FILE *monty_init(int ac, char *av[]);
 /*Globals*/
 extern char *buf;
 extern FILE *monty;
+extern monty_data data;
+char *buf;
+FILE *monty;
+monty_data data;
+
 #endif

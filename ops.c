@@ -1,5 +1,4 @@
 #include "monty.h"
-#include "global.h"
 
 /**
  * push - pushes an element to the top of a stack
@@ -7,21 +6,35 @@
  * @line_number: line number of this instruction from called script
  * @next: second word of script line to store as int in @stack
  */
-void push(stack_t **stack, unsigned int line_number, char *next)
+void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
-	stack_t *newNode;
+	int i;
+	stack_t *temp, *newNode;
+	char *arg = data.buf + 5;
 
-	if (!atoi(next))
+	if (!*arg)
+		goto fail;
+	for (i = 0; arg[i] && arg[i] != 32; i++)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (arg[i] == 32 || arg[i] < 48 || arg[i] > 57)
+		{
+fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			fclose(data.script);
+			free(data.buf);
+			if (stack)
+			{
+				for (temp = *stack; temp; free(*stack), *stack = temp)
+					temp = temp->next;
+				free(*stack);
+			}
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	newNode = malloc(sizeof(*newNode));
 	if (!newNode)
 		return;
-	newNode->n = atoi(next);
+	newNode->n = atoi(arg);
 	newNode->next = NULL;
 	newNode->prev = NULL;
 
@@ -43,11 +56,10 @@ void push(stack_t **stack, unsigned int line_number, char *next)
  * @line_num: line number of calling script that matched this spec
  * @next: ignored for pall
  */
-void pall(stack_t **stack, NOT USED unsigned int line_num, NOT USED char *next)
+void pall(stack_t **stack, NOT USED unsigned int line_num)
 {
 	stack_t *temp;
 
-	(void) next;
 	/* printf("L: %u, Print them all!\n", line_number); Diagnostic print*/
 	if (*stack)
 	{
