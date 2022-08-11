@@ -57,7 +57,9 @@ char *errcat(char *pname, char *cname);
 int main(int ac, char *av[]);
 /*opcode.c*/
 void pushOp(stack_t stack, unsigned int line_number);
-void run_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+void run_opcode(char *opcode, stack_t **stack, unsigned int line_number
+);
+void pintOp(stack_t stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 
 extern char *global;

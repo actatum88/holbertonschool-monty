@@ -60,8 +60,13 @@ void run_opcode(char *opcode, stack_t **stack, unsigned int line_number)
 void push(stack_t **stack, unsigned int line_number)
 {
 	int n;
+	if (stack)
 	{
-		dprintf(STDERR, "L%u: usage: push integer\n", line_number);
-	       
+		while (stack->next)
+		{
+			stack = stack->next;
+			fprintf(STDERR, "L%u: usage: push integer\n", line_number);
+			exit(EXIT FAILURE);
+		}
 	}
 }
