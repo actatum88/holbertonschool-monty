@@ -12,7 +12,7 @@ The goal of this project is to create an interpreter for Monty ByteCodes files.
 
 ## Examples
 
-atatum/dcorley:~/monty$ cat -e bytecodes/000.m
+<pre><code>atatum/dcorley:~/monty$ cat -e bytecodes/000.m
 push 0$
 push 1$
 push 2$
@@ -23,8 +23,9 @@ push 4$
       push    6        $
 pall$
 atatum/dcorley:~/monty$
+</pre></code>
 
-atatum/dcorley:~/monty$ cat -e bytecodes/001.m
+<pre><code>atatum/dcorley:~/monty$ cat -e bytecodes/001.m
 push 0 Push 0 onto the stack$
 push 1 Push 1 onto the stack$
 $
@@ -41,7 +42,7 @@ $
 $
 pall This is the end of our program. Monty is awesome!$
 atatum/dcorley:~/monty$
-
+</pre></code>
 
 ## File Descriptions
 * **monty.h - Header file that contains all the prototypes and the struct used to make the Monty interpreter functional.
