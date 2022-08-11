@@ -4,7 +4,6 @@
  * push - pushes an element to the top of a stack
  * @stack: data stack to write tod
  * @line_number: line number of this instruction from called script
- * @next: second word of script line to store as int in @stack
  */
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -46,7 +45,6 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	temp = *stack;
 	while (temp->next)
 		temp = temp->next;
-
 	temp->next = newNode;
 	newNode->prev = temp;
 }
@@ -54,7 +52,6 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
  * pall - prints all elements of @stack
  * @stack: data stack to print out
  * @line_num: line number of calling script that matched this spec
- * @next: ignored for pall
  */
 void pall(stack_t **stack, NOT USED unsigned int line_num)
 {
