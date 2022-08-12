@@ -15,6 +15,8 @@ void push(stack_t **stack, unsigned int line_number)
 		goto fail;
 	for (i = 0; arg[i] && arg[i] != 32; i++)
 	{
+		if (arg[i] == '-')
+			continue;
 		if (arg[i] == 32 || arg[i] < 48 || arg[i] > 57)
 		{
 fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -29,24 +31,20 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
-
 	newNode = malloc(sizeof(*newNode));
 	if (!newNode)
-		return;
+		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 	newNode->n = atoi(arg);
-	newNode->next = NULL;
-	newNode->prev = NULL;
-
-	if (!*stack)
+	newNode->next = newNode->prev = NULL;
+	if (*stack)
 	{
-		*stack = newNode;
-		return;
-	}
-	temp = *stack;
-	while (temp->next)
+	for (temp = *stack; temp->next;)
 		temp = temp->next;
 	temp->next = newNode;
 	newNode->prev = temp;
+	return;
+	}
+	*stack = newNode;
 }
 /**
  * pall - prints all elements of @stack
@@ -70,8 +68,13 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 		}
 	}
 }
-
+/**
+ * nop - NO operator, does nothing.
+ * @stack: ignored
+ * @line_number: ignored
+ */
 void nop(NOT USED stack_t **stack, NOT USED unsigned int line_number)
 {
-	return;
+	(void) stack;
+	(void) line_number;
 }
