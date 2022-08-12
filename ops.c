@@ -20,7 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 		if (arg[i] == 32 || arg[i] < 48 || arg[i] > 57)
 		{
 fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			fclose(data.script);
+memfail:		fclose(data.script);
 			free(data.buf);
 			if (stack)
 			{
@@ -35,7 +35,7 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	if (!newNode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		goto memfail;
 	}
 	newNode->n = atoi(arg);
 	newNode->next = newNode->prev = NULL;
