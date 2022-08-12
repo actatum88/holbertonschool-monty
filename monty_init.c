@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * monty_init - handles some error checking and opens the script if possible.
+ * @ac: number of arguments provided
+ * @av: arguments provided by argv
+ */
 void monty_init(int ac, char *av[])
 {
 	FILE *temp = NULL;
