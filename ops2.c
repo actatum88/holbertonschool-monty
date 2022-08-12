@@ -28,3 +28,36 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
+
+/**
+ *swap - swaps the top two elements of the stack
+ *@stack: the stack to push the element to
+ *@line_number: the line number of the particulare opcode instruction
+ *              in the monty byte code file
+ *
+ */
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int newN;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		fclose(data.script);
+		free(data.buf);
+		if (stack)
+		{
+			for (temp = *stack; temp; free(*stack), *stack = temp)
+				temp = temp->next;
+			free(*stack);
+		}
+		exit(EXIT_FAILURE);
+	}
+	newN = (*stack)->n;
+
+	(*stack)->n = (*stack)->next->n;
+/*setting the first number to the next number*/
+	(*stack)->next->n = newN;
+}
