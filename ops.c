@@ -102,6 +102,11 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 }
 
+/**
+ * add - adds top two stack elements
+ * @stack: stack data input
+ * @line_number: number of script that called this function
+ */
 void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -125,6 +130,8 @@ void add(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 
 	*stack = (*stack)->next;
+
+	(*stack)->prev = NULL;
 
 	free(temp);
 
