@@ -38,9 +38,7 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	newNode->next = newNode->prev = NULL;
 	if (*stack)
 	{
-	/* for (temp = *stack; temp->next;) */
-	/* 	temp = temp->next; */
-		newNode->next = *stack; /* newNode; */
+		newNode->next = *stack;
 		(*stack)->prev = newNode;
 	}
 	*stack = newNode;
@@ -83,12 +81,13 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
 /**
  * nop - NO operator, does nothing.
  * @stack: ignored
  * @line_number: ignored
  */
-void nop(NOT USED stack_t **stack, NOT USED unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
