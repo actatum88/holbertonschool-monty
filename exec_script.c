@@ -7,12 +7,12 @@
 void exec_script(stack_t **stack)
 {
 	const char delim = ' ';
-	size_t line = 1, nchars = 0;
+	size_t line = 0, nchars = 0;
 	stack_t *temp;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	/*Read each line of your Monty script*/
-	while (getline(&data.buf, &nchars, data.script) != EOF && line++)
+	while (getline(&data.buf, &nchars, data.script) != EOF && ++line)
 	{
 		squeeze_spaces(data.buf); /*Sanitize the input*/
 		if (*(data.buf))
