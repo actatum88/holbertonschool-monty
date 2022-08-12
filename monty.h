@@ -55,14 +55,26 @@ typedef struct monty_d
 	char *buf;
 	FILE *script;
 } monty_data;
-/*main.c*/
+
+
+/*monty.c*/
+FILE *monty_init(int ac, char *av[]);
+
+/*strings.c*/
 void squeeze_spaces(char *str_d);
+
+/*ops.c*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void (*get_op(char *s))(stack_t **stack, unsigned int line_num);
-void exec_script(stack_t **stack);
+void pint(stack_t **stack, unsigned int line_number);
 void nop(NOT USED stack_t **stack, NOT USED unsigned int line_number);
-FILE *monty_init(int ac, char *av[]);
+
+/*get_op.c*/
+void (*get_op(char *s))(stack_t **stack, unsigned int line_num);
+
+/*execscript.c*/
+void exec_script(stack_t **stack);
+
 /*Globals*/
 extern char *buf;
 extern FILE *monty;
