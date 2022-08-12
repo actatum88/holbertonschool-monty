@@ -67,8 +67,8 @@ void squeeze_spaces(char *str_d);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
-void nop(NOT USED stack_t **stack, NOT USED unsigned int line_number);
-
+void nop(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 /*get_op.c*/
 void (*get_op(char *s))(stack_t **stack, unsigned int line_num);
 

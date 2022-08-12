@@ -52,7 +52,6 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 {
 	stack_t *temp;
 
-	/* printf("L: %u, Print them all!\n", line_number); Diagnostic print*/
 	if (*stack)
 	{
 		temp = *stack;
@@ -74,9 +73,19 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		fclose(data.script);
+		free(data.buf);
+		if (stack)
+		{
+			for (temp = *stack; temp; free(*stack), *stack = temp)
+				temp = temp->next;
+			free(*stack);
+		}
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -91,4 +100,33 @@ void nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
+}
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int newN;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		fclose(data.script);
+		free(data.buf);
+		if (stack)
+		{
+			for (temp = *stack; temp; free(*stack), *stack = temp)
+				temp = temp->next;
+			free(*stack);
+		}
+		exit(EXIT_FAILURE);
+	}
+	newN = (*stack)->n + (*stack)->next->n;
+
+	temp = *stack;
+
+	*stack = (*stack)->next;
+
+	free(temp);
+
+	(*stack)->n = newN;
 }
