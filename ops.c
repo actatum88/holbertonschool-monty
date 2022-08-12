@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#include "limits.h"
 /**
  * push - pushes an element to the top of a stack
  * @stack: data stack to write tod
@@ -8,7 +8,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	int i;
-	stack_t *temp, *newNode;
+	stack_t *temp, *newNode = NULL;
 	char *arg = data.buf + 5;
 
 	if (!*arg)
@@ -31,7 +31,7 @@ memfail:		fclose(data.script);
 			exit(EXIT_FAILURE);
 		}
 	}
-	newNode = malloc(sizeof(*newNode));
+	newNode = malloc(sizeof(stack_t));
 	if (!newNode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
