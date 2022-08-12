@@ -1,12 +1,11 @@
 #include "monty.h"
-FILE *monty_init(int ac, char *av[])
+void monty_init(int ac, char *av[])
 {
 	FILE *temp = NULL;
-
 /*Check for correct usage.*/
 	if (ac != 2)
 	{
-		fprintf(stderr, "USAGE: %s file\n", av[0]);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 /*Check whether the file exists and is readable.*/
@@ -17,6 +16,4 @@ FILE *monty_init(int ac, char *av[])
 	}
 	/*If you argued correctly, the file is opened*/
 	data.script = temp = fopen(av[1], "r");
-
-	return (monty);
 }

@@ -33,7 +33,10 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	}
 	newNode = malloc(sizeof(*newNode));
 	if (!newNode)
-		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	newNode->n = atoi(arg);
 	newNode->next = newNode->prev = NULL;
 	if (*stack)
