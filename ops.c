@@ -65,6 +65,24 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 		}
 	}
 }
+
+/**
+ *pint - prints the value at the top of the stack
+ *@stack: the stack to push the element to
+ *@line_number: the line number of the particulare opcode instruction
+ *              in the monty byte code file
+ *
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf("L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
 /**
  * nop - NO operator, does nothing.
  * @stack: ignored
