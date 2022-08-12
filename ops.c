@@ -70,3 +70,8 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 		}
 	}
 }
+
+void nop(NOT USED stack_t **stack, NOT USED unsigned int line_number)
+{
+	return;
+}
