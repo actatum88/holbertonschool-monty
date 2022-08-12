@@ -38,11 +38,10 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	newNode->next = newNode->prev = NULL;
 	if (*stack)
 	{
-	for (temp = *stack; temp->next;)
-		temp = temp->next;
-	temp->next = newNode;
-	newNode->prev = temp;
-	return;
+	/* for (temp = *stack; temp->next;) */
+	/* 	temp = temp->next; */
+		newNode->next = *stack; /* newNode; */
+		(*stack)->prev = newNode;
 	}
 	*stack = newNode;
 }
@@ -59,12 +58,10 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 	if (*stack)
 	{
 		temp = *stack;
-		while (temp->next)
-			temp = temp->next;
 		while (temp)
 		{
 			printf("%d\n", temp->n);
-			temp = temp->prev;
+			temp = temp->next;
 		}
 	}
 }
