@@ -73,6 +73,8 @@ void swap(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void m_div(stack_t **stack, unsigned int line_number);
 void m_mul(stack_t **stack, unsigned int line_number);
+/*ops3.c*/
+void m_mod(stack_t **stack, unsigned int line_number);
 /*get_op.c*/
 void (*get_op(char *s))(stack_t **stack, unsigned int line_num);
 /*execscript.c*/
