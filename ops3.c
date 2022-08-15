@@ -72,10 +72,17 @@ void m_str(stack_t **stack, NOT USED unsigned int line_number)
 		for (temp = *stack; temp; temp = temp->next)
 		{
 			if (temp->n < 0 || temp->n > 127)
+			{
 				break;
+			}
 			write(1, &temp->n, 1);
 		}
 	}
 	putchar(10);
+	if (temp->n < 0 || temp->n > 127)
+	{
+		putchar('0');
+		putchar(10);
+	}
 }
 
