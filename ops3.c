@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * m_mod - modulos top two stack elements
  * @stack: stack data input
@@ -57,3 +56,34 @@ fail:		freestuff(stack);
 	putchar((*stack)->n);
 	putchar(10);
 }
+
+/**
+ * m_str - writes string in ascii range
+ * @stack: stack data input
+ * @line_number: number of script that called this function
+ */
+void m_str(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (!*stack)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+fail:		freestuff(stack);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n > 127 || (*stack)->n <= 0)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		goto fail;
+	}
+
+	for (temp = *stack; temp; temp = temp->next)
+	{
+		if (temp->n <= 0 || temp->n > 127)
+			break;
+		write(1, &temp->n, 1);
+	}
+	putchar(10);
+}
+
