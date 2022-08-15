@@ -64,7 +64,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		freestuff(stack);
 		exit(EXIT_FAILURE);
 	}
-	newN = (*stack)->n - (*stack)->next->n;
+	newN = (*stack)->next->n - (*stack)->n;
 
 	temp = *stack;
 
