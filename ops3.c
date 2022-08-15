@@ -71,7 +71,7 @@ void m_str(stack_t **stack, NOT USED unsigned int line_number)
 
 		for (temp = *stack; temp; temp = temp->next)
 		{
-			if (temp->n < 0 || temp->n > 127)
+			if (temp->n <= 0 || temp->n > 127)
 			{
 				break;
 			}
