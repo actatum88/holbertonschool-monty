@@ -15,6 +15,9 @@ void (*get_op(char *s))(stack_t **stack, unsigned int line_num)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
+		{"div", m_div},
+		{"mul", m_mul},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;

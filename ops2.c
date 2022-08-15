@@ -46,3 +46,100 @@ void swap(stack_t **stack, unsigned int line_number)
 /*setting the first number to the next number*/
 	(*stack)->next->n = newN;
 }
+
+
+/**
+ * sub - subtracts top two stack elements
+ * @stack: stack data input
+ * @line_number: number of script that called this function
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int newN;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		freestuff(stack);
+		exit(EXIT_FAILURE);
+	}
+	newN = (*stack)->n - (*stack)->next->n;
+
+	temp = *stack;
+
+	*stack = (*stack)->next;
+
+	(*stack)->prev = NULL;
+
+	free(temp);
+
+	(*stack)->n = newN;
+}
+
+
+/**
+ * div - divides top two stack elements
+ * @stack: stack data input
+ * @line_number: number of script that called this function
+ */
+void m_div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int newN;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+fail:		freestuff(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	if (!(*stack)->n)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		goto fail;
+	}
+	newN = (*stack)->next->n / (*stack)->n;
+
+	temp = *stack;
+
+	*stack = (*stack)->next;
+
+	(*stack)->prev = NULL;
+
+	free(temp);
+
+	(*stack)->n = newN;
+}
+
+
+/**
+ * div - divides top two stack elements
+ * @stack: stack data input
+ * @line_number: number of script that called this function
+ */
+void m_mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int newN;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		freestuff(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	newN = (*stack)->n * (*stack)->next->n;
+
+	temp = *stack;
+
+	*stack = (*stack)->next;
+
+	(*stack)->prev = NULL;
+
+	free(temp);
+
+	(*stack)->n = newN;
+}
