@@ -13,12 +13,12 @@ void monty_init(int ac, char *av[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-/*Check whether the file exists and is readable.*/
-	if (access(av[1], F_OK | R_OK))
+	/*Try to open the file */
+	data.script = temp = fopen(av[1], "r");
+	/*Check whether we actually opened it.*/
+	if (!data.script)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	/*If you argued correctly, the file is opened*/
-	data.script = temp = fopen(av[1], "r");
 }

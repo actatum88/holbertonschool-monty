@@ -9,7 +9,7 @@ void squeeze_spaces(char *str_d)
 
 	for (; str_d[i]; i++)
 	{
-		if (str_d[i] == '\n' || str_d[i] == '\t')
+		if (str_d[i] == '\t')
 			str_d[i] = ' ';
 	}
 

@@ -12,14 +12,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		fclose(data.script);
-		free(data.buf);
-		if (stack)
-		{
-			for (temp = *stack; temp; free(*stack), *stack = temp)
-				temp = temp->next;
-			free(*stack);
-		}
+		freestuff(stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
@@ -45,14 +38,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		fclose(data.script);
-		free(data.buf);
-		if (stack)
-		{
-			for (temp = *stack; temp; free(*stack), *stack = temp)
-				temp = temp->next;
-			free(*stack);
-		}
+		freestuff(stack);
 		exit(EXIT_FAILURE);
 	}
 	newN = (*stack)->n;

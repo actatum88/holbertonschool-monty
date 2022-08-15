@@ -54,6 +54,9 @@ typedef struct monty_d
 	char *buf;
 	FILE *script;
 } monty_data;
+void dsh_read_line(char **buf);
+void freestuff(stack_t **stack);
+void *malloc(NOT USED size_t size);
 /*monty.c*/
 void monty_init(int ac, char *av[]);
 /*strings.c*/

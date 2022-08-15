@@ -20,14 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 		if (arg[i] == 32 || arg[i] < 48 || arg[i] > 57)
 		{
 fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-memfail:		fclose(data.script);
-			free(data.buf);
-			if (stack)
-			{
-				for (temp = *stack; temp; free(*stack), *stack = temp)
-					temp = temp->next;
-				free(*stack);
-			}
+			freestuff(stack);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -35,7 +28,8 @@ memfail:		fclose(data.script);
 	if (!newNode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		goto memfail;
+		freestuff(stack);
+		exit(EXIT_FAILURE);
 	}
 	newNode->n = atoi(arg);
 	newNode->next = newNode->prev = NULL;
@@ -81,14 +75,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		fclose(data.script);
-		free(data.buf);
-		if (stack)
-		{
-			for (temp = *stack; temp; free(*stack), *stack = temp)
-				temp = temp->next;
-			free(*stack);
-		}
+		freestuff(stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -118,14 +105,7 @@ void add(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
-		fclose(data.script);
-		free(data.buf);
-		if (stack)
-		{
-			for (temp = *stack; temp; free(*stack), *stack = temp)
-				temp = temp->next;
-			free(*stack);
-		}
+		freestuff(stack);
 		exit(EXIT_FAILURE);
 	}
 	newN = (*stack)->n + (*stack)->next->n;

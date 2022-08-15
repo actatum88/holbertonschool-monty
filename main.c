@@ -8,20 +8,13 @@
  */
 int main(int ac, char *av[])
 {
-	stack_t *stack = NULL, *temp = NULL;
+	stack_t *stack = NULL;
 
 	monty_init(ac, av);
 
 	exec_script(&stack);
 
-	fclose(data.script); /*Close the file when you don't need it, start freeing*/
+	freestuff(&stack);
 
-
-	if (stack)
-	{
-		for (temp = stack; temp; free(stack), stack = temp)
-			temp = temp->next;
-		free(stack);
-	}
 	return (0);
 }
