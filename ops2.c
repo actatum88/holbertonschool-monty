@@ -79,7 +79,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 
 /**
- * div - divides top two stack elements
+ * m_div - divides top two stack elements
  * @stack: stack data input
  * @line_number: number of script that called this function
  */
@@ -115,7 +115,7 @@ fail:		freestuff(stack);
 
 
 /**
- * div - divides top two stack elements
+ * m_mul - multiplies top two stack elements
  * @stack: stack data input
  * @line_number: number of script that called this function
  */
