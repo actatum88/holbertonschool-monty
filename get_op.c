@@ -19,6 +19,7 @@ void (*get_op(char *s))(stack_t **stack, unsigned int line_num)
 		{"div", m_div},
 		{"mul", m_mul},
 		{"mod", m_mod},
+		{"pchar", m_pchar},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
