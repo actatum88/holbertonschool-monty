@@ -7,18 +7,14 @@
 void exec_script(stack_t **stack)
 {
 	const char delim = ' ';
-	size_t line = 1;
+	size_t line = 0, nchars = 0;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	data.buf = NULL;
 
 	/*Read each line of your Monty script*/
-	do {
-		dsh_read_line(&data.buf);
-
-		if (!data.buf) /*This is how we catch EOF*/
-			break;
-
+	while (getline(&data.buf, &nchars, data.script) != EOF && ++line)
+	{
 		squeeze_spaces(data.buf); /*Sanitize the input*/
 
 		if (!*(data.buf)) /*This is how we catch an empty line*/
@@ -34,6 +30,5 @@ void exec_script(stack_t **stack)
 		}
 
 		f(stack, line);
-
-	} while (++line);
+	}
 }

@@ -48,6 +48,7 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 void pall(stack_t **stack, NOT USED unsigned int line_num)
 {
 	stack_t *temp;
+
 	if (*stack)
 	{
 		temp = *stack;
