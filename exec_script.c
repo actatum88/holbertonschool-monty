@@ -17,7 +17,7 @@ void exec_script(stack_t **stack)
 	{
 		squeeze_spaces(data.buf); /*Sanitize the input*/
 
-		if (!*(data.buf)) /*This is how we catch an empty line*/
+		if (!*(data.buf) || *(data.buf) == '#')/*This is how we catch an empty line*/
 			continue;
 
 		f = get_op(strtok(data.buf, &delim)); /*Get the first word as a function*/
