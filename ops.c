@@ -8,7 +8,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	int i;
-	stack_t *temp, *newNode = NULL;
+	stack_t *newNode = NULL;
 	char *arg = data.buf + 5;
 
 	if (!*arg)
@@ -48,7 +48,6 @@ fail:			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 void pall(stack_t **stack, NOT USED unsigned int line_num)
 {
 	stack_t *temp;
-
 	if (*stack)
 	{
 		temp = *stack;
@@ -70,8 +69,6 @@ void pall(stack_t **stack, NOT USED unsigned int line_num)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
-
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
