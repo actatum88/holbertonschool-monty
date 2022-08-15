@@ -79,10 +79,5 @@ void m_str(stack_t **stack, NOT USED unsigned int line_number)
 		}
 	}
 	putchar(10);
-	if (temp->n < 0 || temp->n > 127)
-	{
-		putchar('0');
-		putchar(10);
-	}
 }
 
